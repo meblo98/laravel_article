@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h3 align="center" class="mt-5 -mb-2">Enregistré un articles</h3>
+    <h3 align="center" class="mt-5 -mb-2">Enregistré un commentaire</h3>
 <div class="row">
 <div class="form-area">
     <form method="POST" action="{{ route('articles.store') }}" enctype="multipart/form-data">

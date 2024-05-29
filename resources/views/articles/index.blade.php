@@ -1,48 +1,59 @@
 @extends('layout.app')
 
 @section('content')
-<div class="container mt-4">
-    <div class="d-flex justify-content-between mb-3">
-        <h2>Liste des articles articles</h2>
-        <a href="{{ route('articles.create') }}" class="btn btn-primary">Créer un nouvel article</a>
-    </div>
 
-    @if ($message = Session::get('success'))
-        <div class="alert alert-success">
-            {{ $message }}
-        </div>
-    @endif
+<div class="container">
+    <h3 align="center" class="mt-5">Liste des articles</h3>
+    <a class="btn btn-primary ml-3" href="{{ route('articles.create')}}">Ajouter un article</a>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
 
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>Titre</th>
-                <th>Descriptin</th>
-                <th>Date de création</th>
-                <th>Descriptin</th>
-                <th>Image</th>
-                <th>A la une</th>
-                <th width="280px">Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($articles as $article)
-            <tr>
-                <td>{{ $article->title }}</td>
-                <td>{{ $article->content }}</td>
-                <td>
-                    <form action="{{ route('articles.destroy', $article->id) }}" method="POST">
-                        <a class="btn btn-info" href="{{ route('articles.show', $article->id) }}">Show</a>
-                        <a class="btn btn-primary" href="{{ route('articles.edit', $article->id) }}">Edit</a>
+              <div class="row mb-2">
+                @foreach ($articles as $article)
+            <div class="col-md-6">
 
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                    </form>
-                </td>
-            </tr>
+            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-500 position-relative">
+                <div class="col p-4 d-flex flex-column position-static">
+                <strong class="d-inline-block mb-2 text-success-emphasis">{{ $article->categorie }}</strong>
+                <h3 class="mb-0">{{ $article->nom }}</h3>
+                <div class="mb-1 text-body-secondary">{{ $article->created_at }}</div>
+                <a href="{{ route('articles.show', $article->id) }}" class="icon-link gap-1 icon-link-hover stretched-link">
+                    Lire l'article
+                    <svg class="bi"><use xlink:href="#chevron-right"/></svg>
+                </a>
+                </div>
+                <div class="col-auto d-flex d-lg-block">
+                    <img src="{{ $article->image }}" class="card-img-top" alt="...">
+                </div>
+            </div>
+
+            </div>
             @endforeach
-        </tbody>
-    </table>
+        </div>
+        </div>
+    </div>
 </div>
+
 @endsection
+
+@push('css')
+<style>
+    .form-area {
+        padding: 20px;
+        margin-top: 20px;
+        background-color: #FFFF00;
+    }
+
+    .bi-trash-fill {
+        color: red;
+        font-size: 18px;
+    }
+
+    .bi-pencil {
+        color: green;
+        font-size: 18px;
+        margin-left: 20px;
+    }
+</style>
+@endpush
