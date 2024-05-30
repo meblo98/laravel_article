@@ -49,7 +49,7 @@ class ArticleController extends Controller
     public function show( $id)
     {
 
-        $articles = Article::with('commentaire')->find($id);
+        $articles = Article::with('commentaires')->find($id);
         return view('articles.detail', compact('articles'));
     }
 

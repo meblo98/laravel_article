@@ -24,7 +24,7 @@
                 </a>
                 </div>
                 <div class="col-auto d-flex d-lg-block">
-                    <img src="{{ $article->image }}" class="card-img-top" alt="...">
+                    <img src="{{ $article->image_url }}" class="card-img-top" alt="...">
                 </div>
             </div>
 

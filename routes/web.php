@@ -13,3 +13,5 @@ Route::resource("commentaire", CommentaireController::class);
 
 
 Route::resource("articles", ArticleController::class);
+
+Route::get('/', [ArticleController::class, 'index']);

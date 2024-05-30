@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
 use App\Models\Commentaire;
 use Illuminate\Http\Request;
 
 class CommentaireController extends Controller
 {
+
 
     public $commentaire;
     public function __construct(){
@@ -18,6 +20,7 @@ class CommentaireController extends Controller
      */
     public function index()
     {
+        $articles = Article::all();
         $commentaire = Commentaire::all();
         return view('articles.detail', compact('commentaire'));
     }
@@ -27,7 +30,7 @@ class CommentaireController extends Controller
      */
     public function create()
     {
-        return view('commentaire.create');
+        return view('articles.detail');
         return redirect('articles.detail');
     }
 
@@ -37,7 +40,7 @@ class CommentaireController extends Controller
     public function store(Request $request)
     {
         $this->commentaire->create($request->all());
-        return redirect('commentaire');
+        return redirect()->back();
     }
 
     /**
@@ -69,6 +72,8 @@ class CommentaireController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $commentaires = $this->commentaire->findOrFail($id);
+        $commentaires->delete();
+        return redirect()->back();
     }
 }
