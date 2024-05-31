@@ -64,7 +64,9 @@ class CommentaireController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $commentaires = $this->commentaire->find($id);
+        $commentaires->update(array_merge($commentaires->toArray(), $request->toArray()));
+        return redirect('articles.detail');
     }
 
     /**

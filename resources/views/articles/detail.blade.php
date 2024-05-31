@@ -51,12 +51,12 @@
                 @foreach ($articles->commentaires as $comment)
                     <h6>Auteur : {{ $comment->nom_complet_auteur }} </h6>
                     <p>{{ $comment->contenu }}</p>
-                    <a class="d-inline-flex mb-3" href="{{ route('articles.edit', $articles->id) }}">
+                    <a class="d-inline-flex mb-3" href="{{ route('commentaire.edit', $comment->id) }}">
                         <button class="btn btn-primary btn-sm">
                             <i class="fa-solid fa-pencil"></i>   Modifier
                         </button>
                     </a>
-                    <form action="{{ route('commentaire.destroy', $articles->id) }}" method="POST" style="display:inline">
+                    <form action="{{ route('commentaire.destroy', $comment->id) }}" method="POST" style="display:inline">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i>  Supprimer</button>

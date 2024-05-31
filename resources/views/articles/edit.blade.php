@@ -12,7 +12,7 @@
             <div class="col-md-8">
 
             <div class="form-area">
-                <form method="POST" action="{{ route('articles.update', $articles->id) }}">
+                <form method="POST" action="{{ route('articles.update', $articles->id) }}" method="POST">
                 {!! csrf_field() !!}
                   @method("PATCH")
                     <div class="row">
@@ -22,21 +22,21 @@
                         </div>
                         <div class="col-md-6">
                             <label>Image</label>
-                            <input type="text" class="form-control" name="image" value="{{ $articles->image }}">
+                            <input type="text" class="form-control" name="image" value="{{ $articles->image_url }}">
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <label>Categorie</label>
-                            <input type="text" class="form-control" name="categorie" value="{{ $articles->categorie }}">
-                        </div>
-
+                    <div class="col-md-6">
+                        <label>Tendance</label>
+                        <select class="form-select" value="{{ $articles->a_la_une }}" name="a_la_une" aria-label="Default select example">
+                            <option selected>choissir la tendance</option>
+                            <option value="A la une">A la une</option>
+                            <option value="Non">Non</option>
+                          </select>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
                             <label>Description</label>
-                            {{-- <input type="text" class="form-control" name="phone" value="{{ $articles->description }}"> --}}
-                            <textarea name="description" class="form-control" id="description" value="{{ $articles->description }}" cols="30" rows="10"></textarea>
+                            <textarea name="description" class="form-control" id="description"  cols="30" rows="10">{{ $articles->description }}</textarea>
                         </div>
 
                     </div>
