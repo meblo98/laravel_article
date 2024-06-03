@@ -20,7 +20,7 @@ class CommentaireController extends Controller
      */
     public function index()
     {
-        $articles = Article::all();
+        $articles = Article::latest()->get();
         $commentaire = Commentaire::all();
         return view('articles.detail', compact('commentaire'));
     }
@@ -56,7 +56,10 @@ class CommentaireController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $articles = Article::all();
+        $response['commentaire'] = $this->commentaire->find($id);
+        return view('commentaire.edit')->with($response);
+     
     }
 
     /**
@@ -66,7 +69,7 @@ class CommentaireController extends Controller
     {
         $commentaires = $this->commentaire->find($id);
         $commentaires->update(array_merge($commentaires->toArray(), $request->toArray()));
-        return redirect('articles.detail');
+        return redirect()->back();
     }
 
     /**

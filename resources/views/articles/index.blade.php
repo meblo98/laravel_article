@@ -3,11 +3,11 @@
 @section('content')
 
 <div class="container">
-    <h3 align="center" class="mt-5">Liste des articles</h3>
-    <a class="btn btn-primary ml-3" href="{{ route('articles.create')}}">Ajouter un article</a>
+    <h3 align="center" class="mt-5 mb-3">Liste des articles</h3>
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8">
+            <a class="btn btn-primary mb-3 ml-3" href="{{ route('articles.create')}}">Ajouter un article</a>
 
               <div class="row mb-2">
                 @foreach ($articles as $article)

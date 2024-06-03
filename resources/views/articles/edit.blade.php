@@ -22,7 +22,7 @@
                         </div>
                         <div class="col-md-6">
                             <label>Image</label>
-                            <input type="text" class="form-control" name="image" value="{{ $articles->image_url }}">
+                            <input type="text" class="form-control" name="image_url" value="{{ $articles->image_url }}">
                         </div>
                     </div>
                     <div class="col-md-6">
